@@ -20,7 +20,7 @@ Grab the password before you lose it. If you do lose it you can delete the datab
 &#xD;
 https://hub.docker.com/r/adamjsturge/xsshunter-express/</Overview>
   <Category/>
-  <WebUI>http://[IP]:[PORT:4242]/web</WebUI>
+  <WebUI>http://[IP]:[PORT:4242]/admin</WebUI>
   <TemplateURL/>
   <Icon/>
   <ExtraParams/>
