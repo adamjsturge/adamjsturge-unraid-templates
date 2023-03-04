@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
 <Container version="2">
+  <TemplateURL>https://raw.githubusercontent.com/adamjsturge/adamjsturge-unraid-templates/main/adamjsturge/xsshunter-express.xml</TemplateURL>
+  <Beta>false</Beta>
+  <Category>Security</Category>
   <Name>xsshunter-express</Name>
   <Repository>adamjsturge/xsshunter-express</Repository>
   <Registry>https://hub.docker.com/r/adamjsturge/xsshunter-express/</Registry>
-  <Network>bridge</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://hub.docker.com/r/adamjsturge/xsshunter-express/</Support>
-  <Project>https://github.com/adamjsturge/xsshunter-express<Project/>
+  <Project>https://github.com/adamjsturge/adamjsturge-express<Project/>
+  <Icon>https://raw.githubusercontent.com/binhex/adamjsturge-unraid-templates/main/adamjsturge/images/xsshunter-express-icon.png</Icon>
   <Overview>This is a fork of the offiical XSSHunter Express with added Slack and Discord Notification. &#xD;
 &#xD;
 To get this to work you will need a Postgres database and you can change the DATABASE_HOST to point to your database. &#xD;
@@ -23,10 +26,174 @@ https://hub.docker.com/r/adamjsturge/xsshunter-express/</Overview>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1677907185</DateInstalled>
-  <DonateText/>
-  <DonateLink/>
+  <DonateText>Donate</DonateText>
+  <DonateLink>https://www.paypal.com/donate/?hosted_button_id=UE8PBG8WLNV7Y</DonateLink>
   <Requires/>
+  <Network>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>4242</HostPort>
+        <ContainerPort>80</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Network>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/xsshunter-express/payload-fire-images</HostDir>
+      <ContainerDir>/app/payload-fire-images</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+
+    <Volume>
+      <HostDir>/mnt/user/appdata/xsshunter-express/ssldata</HostDir>
+      <ContainerDir>/app/greenlock.d</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>your.host.name</Value>
+      <Name>HOSTNAME</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>YourEmail@gmail.com</Value>
+      <Name>SSL_CONTACT_EMAIL</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>false</Value>
+      <Name>GREENLOCK_SSL_ENABLED</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>50</Value>
+      <Name>MAX_PAYLOAD_UPLOAD_SIZE_MB</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>true</Value>
+      <Name>CONTROL_PANEL_ENABLED</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>false</Value>
+      <Name>SMTP_EMAIL_NOTIFICATIONS_ENABLED</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>smtp.gmail.com</Value>
+      <Name>SMTP_HOST</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>465</Value>
+      <Name>SMTP_PORT</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>true</Value>
+      <Name>SMTP_USE_TLS</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>YourEmail@gmail.com</Value>
+      <Name>SMTP_USERNAME</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>YourEmailPassword</Value>
+      <Name>SMTP_PASSWORD</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>YourEmail@gmail.com</Value>
+      <Name>SMTP_FROM_EMAIL</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>YourEmail@gmail.com</Value>
+      <Name>SMTP_RECEIVER_EMAIL</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>false</Value>
+      <Name>SLACK_NOTIFICATIONS_ENABLED</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>https://hooks.slack.com/services/</Value>
+      <Name>SLACK_WEBHOOK</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>xssalerting</Value>
+      <Name>SLACK_CHANNEL</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>XSS-Hunter</Value>
+      <Name>SLACK_USERNAME</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>hackerman</Value>
+      <Name>SLACK_EMOJI</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>false</Value>
+      <Name>DISCORD_NOTIFICATIONS_ENABLED</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>https://discord.com/api/webhooks/</Value>
+      <Name>DISCORD_WEBHOOK</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>/app/payload-fire-images</Value>
+      <Name>SCREENSHOTS_DIR</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>xsshunterexpress</Value>
+      <Name>DATABASE_NAME</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>xsshunterexpress</Value>
+      <Name>DATABASE_USER</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>xsshunterexpress</Value>
+      <Name>DATABASE_PASSWORD</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>postgresdb</Value>
+      <Name>DATABASE_HOST</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>production</Value>
+      <Name>NODE_ENV</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>99</Value>
+      <Name>PUID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>100</Value>
+      <Name>PGID</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
   <Config Name="HOSTNAME" Target="HOSTNAME" Default="your.host.name" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">your.host.name</Config>
   <Config Name="SSL_CONTACT_EMAIL" Target="SSL_CONTACT_EMAIL" Default="YourEmail@gmail.com" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">YourEmail@gmail.com</Config>
   <Config Name="GREENLOCK_SSL_ENABLED" Target="GREENLOCK_SSL_ENABLED" Default="false" Mode="" Description="Setting true sort of breaks on Unraid unless you have this mapped to 443 and 80 and the hostname already pointing at this ip" Type="Variable" Display="always" Required="false" Mask="false">false</Config>
@@ -51,7 +218,7 @@ https://hub.docker.com/r/adamjsturge/xsshunter-express/</Overview>
   <Config Name="DATABASE_NAME" Target="DATABASE_NAME" Default="xsshunterexpress" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">xsshunterexpress</Config>
   <Config Name="DATABASE_USER" Target="DATABASE_USER" Default="xsshunterexpress" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">xsshunterexpress</Config>
   <Config Name="DATABASE_PASSWORD" Target="DATABASE_PASSWORD" Default="xsshunterexpress" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">xsshunterexpress</Config>
-  <Config Name="DATABASE_HOST" Target="DATABASE_HOST" Default="postgresdb" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">postgresdb</Config>
+  <Config Name="DATABASE_HOST" Target="DATABASE_HOST" Default="postgresdb" Mode="" Description="Normally should be an ip" Type="Variable" Display="always" Required="false" Mask="false">postgresdb</Config>
   <Config Name="NODE_ENV" Target="NODE_ENV" Default="production" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">production</Config>
   <Config Name="Port" Target="80" Default="4242" Mode="tcp" Description="" Type="Port" Display="advanced" Required="false" Mask="false">4242</Config>
   <Config Name="Payload Images" Target="/app/payload-fire-images" Default="/mnt/user/appdata/xsshunter-express/payload-fire-images" Mode="rw" Description="" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/xsshunter-express/payload-fire-images</Config>
